@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss} %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	  <file>logs/telegrambots.log</file>
+	  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    <!-- rollover daily -->
+	    <fileNamePattern>telegrambots-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+	    <timeBasedFileNamingAndTriggeringPolicy
+	          class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	      <!-- or whenever the file size reaches 100MB -->
+	      <maxFileSize>100MB</maxFileSize>
+	    </timeBasedFileNamingAndTriggeringPolicy>
+	  </rollingPolicy>
+	  <encoder>
+	    <pattern>%d{HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+	  </encoder>
+	</appender>
+
+    <logger name="com.kpcard" level="TRACE">
+        <appender-ref ref="rollingFile" />
+    </logger>
+    <logger name="org.telegram.telegrambots" level="INFO"/>
+
+    <root level="INFO">
+        <appender-ref ref="console" />
+    </root>
+</configuration>
