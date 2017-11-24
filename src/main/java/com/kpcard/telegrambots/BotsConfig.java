@@ -32,6 +32,7 @@ public class BotsConfig {
 		return prop.getProperty(propKey);
 		
 	}
+	/*
 	public static final String		KPC_MESSAGE_BOT_TOKEN = "219296420:AAH5CpCdd-eEfjDXYOlCf-tXApwT2aDd4YI";
 	public static final String		KPC_MESSAGE_BOT_USERNAME = "kpc_message_bot";
 
@@ -43,5 +44,5 @@ public class BotsConfig {
 
 	public static final String		KPC_TEST_COMMAND_BOT_TOKEN = "269437500:AAEwAYpqj5H97RdJXbRfVJutzxNvNxwyGMo";
 	public static final String		KPC_TEST_COMMAND_BOT_USERNAME = "kpc_test_command_bot";
-
+	*/
 }
