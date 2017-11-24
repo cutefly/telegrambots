@@ -6,12 +6,14 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class BotsConfig {
+	private static String profile = "develpment";
 	private static Properties prop = new Properties();
 	
 	static {
 //		Properties prop = new Properties();
 		try {
-			InputStream in = BotsConfig.class.getClassLoader().getResourceAsStream("settings.properties");
+			profile = System.getProperty("profile.active", "development");
+			InputStream in = BotsConfig.class.getClassLoader().getResourceAsStream("settings." + profile + ".properties");
 			prop.load(in);
 			in.close();
 		} catch (IOException e) {
@@ -21,13 +23,13 @@ public class BotsConfig {
 	}
 	
 	public static String getBotToken(String key) {
-		String propKey = String.format("%s.%s_bot_token", prop.getProperty("profile.mode"), key);
+		String propKey = String.format("%s_bot_token", key);
 		
 		return prop.getProperty(propKey);
 	}
 	
 	public static String getBotUsername(String key) {
-		String propKey = String.format("%s.%s_bot_username", prop.getProperty("profile.mode"), key);
+		String propKey = String.format("%s_bot_username", key);
 		
 		return prop.getProperty(propKey);
 		
